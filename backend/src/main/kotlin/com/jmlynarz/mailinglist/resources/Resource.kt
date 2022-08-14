@@ -1,4 +1,4 @@
-package com.jmlynarz.mailinglist.users
+package com.jmlynarz.mailinglist.resources
 
 enum class Resource {
     PUBLISHERS,

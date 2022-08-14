@@ -1,4 +1,4 @@
-package com.jmlynarz.mailinglist.auth
+package com.jmlynarz.mailinglist.users
 
 import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.stereotype.Repository

@@ -1,0 +1,1 @@
+ docker run --restart unless-stopped --name mailing-list-db -p 5445:5432 -d mailing-list-db

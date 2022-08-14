@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  jpa:
+    database: POSTGRESQL
+    datasource:
+      platform: postgres
+    hibernate:
+      ddl-auto: update

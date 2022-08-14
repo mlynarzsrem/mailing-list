@@ -1,5 +1,7 @@
-package com.jmlynarz.mailinglist.auth
+package com.jmlynarz.mailinglist.users
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.jmlynarz.mailinglist.resources.ResourceAccess
 import java.util.*
 import javax.persistence.*
 
@@ -12,6 +14,7 @@ data class User(
         @Column(nullable = false, unique = true)
         val email: String,
         @Column(nullable = false)
+        @JsonIgnore
         var password: String,
         @OneToMany(cascade = [CascadeType.ALL])
         var accesses: List<ResourceAccess> = emptyList()

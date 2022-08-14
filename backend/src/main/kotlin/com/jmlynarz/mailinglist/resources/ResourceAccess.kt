@@ -1,4 +1,4 @@
-package com.jmlynarz.mailinglist.users
+package com.jmlynarz.mailinglist.resources
 
 import java.util.*
 import javax.persistence.*
