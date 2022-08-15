@@ -13,7 +13,7 @@ data class Publisher(
         val id: UUID? = null,
         @Column(nullable = false, unique = true)
         val email: String,
-        @OneToMany(cascade = [CascadeType.ALL])
+        @OneToMany(cascade = [CascadeType.MERGE])
         var allowedTopics: List<Topic> = mutableListOf(),
         @Column(nullable = false)
         val created: Instant = Instant.now(),

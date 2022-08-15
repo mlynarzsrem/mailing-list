@@ -1,12 +1,12 @@
 package com.jmlynarz.mailinglist.users
 
-import com.jmlynarz.mailinglist.resources.ResourceAccessesRepository
+import com.jmlynarz.mailinglist.roles.RolesRepository
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
 class UsersService(val userRepository: UserRepository,
-                   val resourceAccessesRepository: ResourceAccessesRepository,
+                   val rolesRepository: RolesRepository,
                    val passwordEncoder: PasswordEncoder) {
 
     fun createUser(createUserRequest: CreateUserRequest): User {

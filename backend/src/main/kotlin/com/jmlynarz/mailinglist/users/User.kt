@@ -1,7 +1,7 @@
 package com.jmlynarz.mailinglist.users
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import com.jmlynarz.mailinglist.resources.ResourceAccess
+import com.jmlynarz.mailinglist.roles.Role
 import java.util.*
 import javax.persistence.*
 
@@ -16,6 +16,6 @@ data class User(
         @Column(nullable = false)
         @JsonIgnore
         var password: String,
-        @OneToMany(cascade = [CascadeType.ALL])
-        var accesses: List<ResourceAccess> = emptyList()
+        @OneToMany(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
+        var roles: List<Role> = emptyList()
 )

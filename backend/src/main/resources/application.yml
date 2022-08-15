@@ -10,3 +10,7 @@ spring:
       platform: postgres
     hibernate:
       ddl-auto: update
+
+admin:
+  email: admin@mail.com
+  password: admin123
