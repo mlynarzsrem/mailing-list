@@ -1,10 +1,9 @@
 package com.jmlynarz.mailinglist.topics
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.jmlynarz.mailinglist.subscribers.Subscriber
 import java.util.UUID
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 data class Topic(
@@ -12,5 +11,12 @@ data class Topic(
         @GeneratedValue
         val id: UUID? = null,
         @Column(nullable = false, unique = true)
-        val name: String
+        val name: String,
+        @ManyToMany(cascade = [CascadeType.MERGE], fetch = FetchType.LAZY)
+        @JoinTable(
+                name = "topic_subscriber",
+                joinColumns = [JoinColumn(name = "topic_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(name = "subscriber_id", referencedColumnName = "id")])
+        @JsonIgnore
+        val subscribers: List<Subscriber> = mutableListOf(),
 )

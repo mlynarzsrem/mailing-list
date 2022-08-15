@@ -13,7 +13,7 @@ data class Subscriber(
         val id: UUID? = null,
         @Column(nullable = false, unique = true)
         val email: String,
-        @OneToMany(cascade = [CascadeType.MERGE])
+        @ManyToMany(cascade = [CascadeType.MERGE], mappedBy = "subscribers")
         var topics: List<Topic> = mutableListOf(),
         var name: String? = null,
         var surname: String? = null,
