@@ -25,8 +25,14 @@ class UsersController(val usersService: UsersService) {
 
     @PutMapping("/{id}/roles")
     @PreAuthorize("hasAuthority('USERS_WRITE')")
-    fun assignRole(@PathVariable id: UUID, roles: List<String>) {
+    fun assignRole(@PathVariable id: UUID, @RequestBody roles: List<String>) {
         usersService.assignRoles(id, roles)
+    }
+
+    @PutMapping("/{id}/password")
+    @PreAuthorize("@authorisationService.hasUserWriteAccess(#id)")
+    fun changePassword(@PathVariable id: UUID, @RequestBody changePasswordRequest: ChangePasswordRequest) {
+        usersService.changePassword(id, changePasswordRequest)
     }
 
     @DeleteMapping("/{id}")
