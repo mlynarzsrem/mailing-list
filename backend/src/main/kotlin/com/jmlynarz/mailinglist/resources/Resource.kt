@@ -4,5 +4,6 @@ enum class Resource {
     PUBLISHERS,
     SUBSCRIBERS,
     TOPICS,
-    USERS
+    USERS,
+    ROLES
 }
