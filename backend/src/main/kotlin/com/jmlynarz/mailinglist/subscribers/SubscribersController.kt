@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.data.domain.Pageable
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -20,6 +21,7 @@ import java.util.UUID
 class SubscribersController(val subscribersService: SubscribersService) {
 
     @GetMapping
+    @PreAuthorize("hasAuthority('SUBSCRIBERS_READ')")
     fun getSubscribers(
             @RequestParam(required = false, defaultValue = "") query: String,
             pageable: Pageable
@@ -28,21 +30,25 @@ class SubscribersController(val subscribersService: SubscribersService) {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('SUBSCRIBERS_WRITE')")
     fun createSubscriber(@RequestBody createSubscriberRequest: CreateSubscriberRequest): Subscriber {
         return subscribersService.createSubscriber(createSubscriberRequest)
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('SUBSCRIBERS_WRITE')")
     fun deleteSubscriber(@PathVariable id: UUID) {
         subscribersService.removeSubscriber(id)
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('SUBSCRIBERS_WRITE')")
     fun updateSubscriber(@PathVariable id: UUID, @RequestBody updateSubscriberRequest: UpdateSubscriberRequest) {
         subscribersService.updateSubscriber(id, updateSubscriberRequest)
     }
 
     @PutMapping("/{id}/topics")
+    @PreAuthorize("hasAuthority('SUBSCRIBERS_WRITE')")
     fun updateTopics(@PathVariable id: UUID, @RequestBody topics: List<String>) {
         subscribersService.updateTopics(id, topics)
     }

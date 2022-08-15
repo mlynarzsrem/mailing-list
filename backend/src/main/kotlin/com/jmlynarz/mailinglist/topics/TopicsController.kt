@@ -2,6 +2,7 @@ package com.jmlynarz.mailinglist.topics
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,17 +18,20 @@ import java.util.UUID
 class TopicsController(val topicsService: TopicsService) {
 
     @GetMapping
+    @PreAuthorize("hasAuthority('TOPICS_READ')")
     fun getTopics(@RequestParam(required = false, defaultValue = "") query: String,
                   pageable: Pageable): Page<Topic> {
         return topicsService.getTopics(query, pageable)
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('TOPICS_WRITE')")
     fun addTopic(@RequestBody name: String): Topic {
         return topicsService.addTopic(name)
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('TOPICS_WRITE')")
     fun deleteTopic(@PathVariable id: UUID) {
         topicsService.deleteTopic(id)
     }
