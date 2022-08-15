@@ -12,5 +12,6 @@ data class Role(
         @Column(nullable = false, unique = true)
         val name: String,
         @OneToMany(cascade = [CascadeType.MERGE], fetch = FetchType.EAGER)
-        var accesses: List<ResourceAccess> = emptyList()
+        var accesses: List<ResourceAccess> = emptyList(),
+        var readonly: Boolean? = false
 )

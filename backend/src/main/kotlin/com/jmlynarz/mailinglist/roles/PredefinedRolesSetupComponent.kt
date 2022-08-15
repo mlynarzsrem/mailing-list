@@ -30,6 +30,7 @@ class PredefinedRolesSetupComponent(val rolesRepository: RolesRepository,
             }
         }
         role.accesses = resourceAccessesMap.values.map { resourceAccessesRepository.save(it) }.toList()
+        role.readonly = true
         rolesRepository.save(role)
     }
 
@@ -37,6 +38,6 @@ class PredefinedRolesSetupComponent(val rolesRepository: RolesRepository,
         val resourceAccesses: List<ResourceAccess> = predefinedRole.accesses
                 .map { ResourceAccess(resource =  it.resource, readAccess = it.readAccess, writeAccess = it.writeAccess) }
                 .map { resourceAccessesRepository.save(it) }
-        rolesRepository.save(Role(name = predefinedRole.name, accesses = resourceAccesses))
+        rolesRepository.save(Role(name = predefinedRole.name, accesses = resourceAccesses, readonly = true))
     }
 }
