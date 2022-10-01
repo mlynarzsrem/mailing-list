@@ -8,7 +8,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/publishers")
-class PublishersController(val publishersService: PublishersService) {
+class PublishersController(private val publishersService: PublishersService) {
 
     @GetMapping
     @PreAuthorize("hasAuthority('PUBLISHERS_READ')")

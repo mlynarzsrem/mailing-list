@@ -36,3 +36,4 @@ lib/
 
 ### VS Code ###
 .vscode/
+application-local.yaml

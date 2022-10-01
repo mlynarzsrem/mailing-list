@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class PublishersService(val publishersRepository: PublishersRepository,
-                        val topicRepository: TopicRepository) {
+class PublishersService(private val publishersRepository: PublishersRepository,
+                        private val topicRepository: TopicRepository) {
 
     fun createPublisher(createPublisherRequest: CreatePublisherRequest): Publisher {
         val publisher = Publisher(

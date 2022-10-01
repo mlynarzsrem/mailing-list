@@ -10,9 +10,9 @@ import org.springframework.web.server.ResponseStatusException
 import java.util.UUID
 
 @Service
-class UsersService(val userRepository: UserRepository,
-                   val rolesRepository: RolesRepository,
-                   val passwordEncoder: PasswordEncoder) {
+class UsersService(private val userRepository: UserRepository,
+                   private val rolesRepository: RolesRepository,
+                   private val passwordEncoder: PasswordEncoder) {
 
     fun getUsers(query: String, pageable: Pageable): Page<User> {
         return userRepository.findAllByQuery(query.lowercase().trim(), pageable)

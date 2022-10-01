@@ -10,7 +10,25 @@ spring:
       platform: postgres
     hibernate:
       ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tofill
+    password: tofill
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 admin:
   email: admin@mail.com
   password: admin123
+
+mail-receive:
+  host: imap.gmail.com
+  port: 993
+  starttls: true
+  username: tofill
+  password: tofill

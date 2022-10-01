@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 import java.util.UUID
 
 @Service
-class AuthorisationService(val userRepository: UserRepository) {
+class AuthorisationService(private val userRepository: UserRepository) {
 
     fun hasUserWriteAccess(userId: UUID): Boolean {
         val user: User = userRepository.findById(userId).orElseThrow()

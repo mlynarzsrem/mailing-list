@@ -13,6 +13,8 @@ interface TopicRepository: PagingAndSortingRepository<Topic, UUID> {
     @Query("SELECT t FROM Topic t WHERE t.name in :names")
     fun findAllByNames(names: List<String>): List<Topic>
 
+    fun findAllByName(name: String): List<Topic>
+
     @Query("SELECT t FROM Topic t WHERE :query = '' OR t.name LIKE %:query%")
     fun findAllByQuery(query: String, pageable: Pageable): Page<Topic>
 }

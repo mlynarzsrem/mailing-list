@@ -10,8 +10,8 @@ import org.springframework.web.server.ResponseStatusException
 import java.util.UUID
 
 @Service
-class RolesService(val rolesRepository: RolesRepository,
-                   val resourceAccessesRepository: ResourceAccessesRepository) {
+class RolesService(private val rolesRepository: RolesRepository,
+                   private val resourceAccessesRepository: ResourceAccessesRepository) {
 
 
     fun getRoles(query: String, pageable: Pageable): Page<Role> {

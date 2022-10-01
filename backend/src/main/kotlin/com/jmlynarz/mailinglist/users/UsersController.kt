@@ -8,7 +8,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/users")
-class UsersController(val usersService: UsersService) {
+class UsersController(private val usersService: UsersService) {
 
     @GetMapping
     @PreAuthorize("hasAuthority('USERS_READ')")

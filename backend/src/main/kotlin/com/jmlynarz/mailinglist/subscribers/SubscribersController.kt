@@ -18,7 +18,7 @@ import java.util.UUID
 
 @RestController
 @RequestMapping("/subscribers")
-class SubscribersController(val subscribersService: SubscribersService) {
+class SubscribersController(private val subscribersService: SubscribersService) {
 
     @GetMapping
     @PreAuthorize("hasAuthority('SUBSCRIBERS_READ')")

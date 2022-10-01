@@ -10,8 +10,8 @@ import java.util.UUID
 
 @Service
 class SubscribersService(
-        val subscribersRepository: SubscribersRepository,
-        val topicRepository: TopicRepository) {
+        private val subscribersRepository: SubscribersRepository,
+        private val topicRepository: TopicRepository) {
 
     fun createSubscriber(createSubscriberRequest: CreateSubscriberRequest): Subscriber {
         val subscriber = Subscriber(
